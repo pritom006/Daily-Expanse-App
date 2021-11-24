@@ -7,6 +7,16 @@ class NewTransaction extends StatelessWidget {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
+  void submitData() {
+    final enterTitle = titleController.text;
+    final enterAmount = double.parse(amountController.text);
+
+    if (enterTitle.isEmpty || enterAmount < 0) {
+      return;
+    }
+    transactionFunction(enterTitle, enterAmount);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,6 +50,7 @@ class NewTransaction extends StatelessWidget {
                     labelStyle: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                   controller: titleController,
+                  onSubmitted: (_) => submitData,
                 ),
                 SizedBox(
                   height: 10,
@@ -53,6 +64,7 @@ class NewTransaction extends StatelessWidget {
                   ),
                   controller: amountController,
                   keyboardType: TextInputType.number,
+                  onSubmitted: (_) => submitData,
                 ),
                 SizedBox(
                   height: 10,
@@ -61,8 +73,7 @@ class NewTransaction extends StatelessWidget {
                   margin: EdgeInsets.only(right: 20),
                   child: ElevatedButton(
                     onPressed: () {
-                      transactionFunction(titleController.text,
-                          double.parse(amountController.text));
+                      submitData();
                     },
                     child: Text(
                       'Add',

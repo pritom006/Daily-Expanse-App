@@ -45,7 +45,7 @@ class _UserTransactionState extends State<UserTransaction> {
           transactionFunction: addTransaction,
         ),
         TransactionList(
-          tLsit: transaction,
+          tList: transaction,
         ),
       ],
     );

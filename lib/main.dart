@@ -18,13 +18,18 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.green.shade900,
         ),
-        body: SafeArea(
+        body: SingleChildScrollView(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [UserTransaction()],
             ),
           ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
         ),
       ),
     );
